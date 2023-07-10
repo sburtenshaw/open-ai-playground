@@ -1,28 +1,30 @@
+# Initial setup
+
+- `npm install` - Install packages
+- `npx prisma db push` - Create a new local database
+- `npm run dev` - Start the development server
+- Navigate to `localhost:3000`
+
+# Journal
+
+## Initial setup - 10th July 17:23
+
+Bootstrapped the project with `create-t3-app`.
+
+While I don't plan on using them all initially, I enabled all the package options for convinience, incase I want to use them further down the line. The packages in question are `nextAuth.js` and `prisma`. I don't plan on integrating user authentication or implementing any features that require database storage initially. However I do have feature ideas that would require use of these concepts but are out of scope for this first version, such as:
+- Chat history
+- Saved presets
+- Real time collaboration
+
+I will be making use of a simple backend with tRPC early on to communicate with the OpenAI API. I'm doing this to avoid exposing my OpenAI API key in the client.
+
+Next I will be working on what I call the "Base concept". Basically a simplified version of OpenAI's Playground feature, without any advanced features or custom ideas implemented. This will be the basis to add more custom functionality to.
+
 # Create T3 App
 
 This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
-
-## What's next? How do I make an app with this?
-
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
-
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
-
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
-
-## Learn More
 
 To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
 
 - [Documentation](https://create.t3.gg/)
 - [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
-
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
-
-## How do I deploy this?
-
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
