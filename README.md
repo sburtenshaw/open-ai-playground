@@ -16,7 +16,9 @@ While I don't plan on using them all initially, I enabled all the package option
 - Saved presets
 - Real time collaboration
 
-I will be making use of a simple backend with tRPC early on to communicate with the OpenAI API. I'm doing this to avoid exposing my OpenAI API key in the client.
+I will be making use of a simple backend with tRPC early on to communicate with OpenAI's API. I'm doing this to avoid exposing my OpenAI API key in the client.
+
+I was torn between commenting out / removing the `nextAuth` and `prisma` configurations given they are not currently being used. I decided to keep them configured to make things easier when I want to use them and to save time now. I believe the additional unnecessary footprint is not a big issue given they will likely be used in the future anyway.
 
 Next I will be working on what I call the "Base concept". Basically a simplified version of OpenAI's Playground feature, without any advanced features or custom ideas implemented. This will be the basis to add more custom functionality to.
 
