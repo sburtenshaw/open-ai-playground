@@ -1,4 +1,6 @@
 import Button from "./button";
+import LoadingSpinner from "./loading-spinner";
+import RangeInput from "./range-input";
 import TextInput from "./text-input";
 
-export { Button, TextInput };
+export { Button, LoadingSpinner, RangeInput, TextInput };
