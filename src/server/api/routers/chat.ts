@@ -1,5 +1,8 @@
 import { z } from "zod";
+
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
+
+import { createChatCompletion } from "~/server/open-ai";
 
 export const chatRouter = createTRPCRouter({
   submit: publicProcedure
@@ -13,7 +16,10 @@ export const chatRouter = createTRPCRouter({
         ),
       })
     )
-    .mutation(({ input }) => {
-      return "worked";
+    .mutation(async ({ input }) => {
+      const {
+        data: { choices },
+      } = await createChatCompletion(input.messages);
+      return choices[0];
     }),
 });
