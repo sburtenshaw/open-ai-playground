@@ -1,10 +1,10 @@
 import type { ButtonHTMLAttributes, ReactNode } from "react";
 
-interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface PropsType extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
 }
 
-function Button({ disabled, children, ...props }: Props) {
+function Button({ disabled, children, ...props }: PropsType) {
   const getClassName = () => {
     const className = [
       "text-white",

@@ -5,10 +5,14 @@ import { capitalize } from "lodash";
 import { Button, TextInput } from "~/components";
 
 import { DEFAULT_SYSTEM_MESSAGE } from "~/utils/message";
-import type { ServerMessage, ClientMessage, Role } from "~/utils/message";
+import type {
+  ServerMessageType,
+  ClientMessageType,
+  Role,
+} from "~/utils/message";
 
-interface Props {
-  message: ServerMessage | ClientMessage;
+interface PropsType {
+  message: ServerMessageType | ClientMessageType;
   canRemove?: boolean;
   handleChange: (value: string) => void;
   handleRemove?: () => void;
@@ -26,7 +30,7 @@ function MessageRow({
   canRemove = false,
   handleChange,
   handleRemove,
-}: Props) {
+}: PropsType) {
   return (
     <>
       <div className="flex w-20" style={{ marginTop: "11px" }}>

@@ -2,20 +2,20 @@ import { v4 as uuidv4 } from "uuid";
 
 export type Role = "system" | "user" | "assistant";
 
-export interface ServerMessage {
+export interface ServerMessageType {
   role: Role;
   content: string;
 }
 
-export interface ClientMessage extends ServerMessage {
+export interface ClientMessageType extends ServerMessageType {
   id: string;
 }
 
 export const DEFAULT_SYSTEM_MESSAGE = "You are a helpful assistant.";
 
 export function processMessageForClient(
-  serverMessage: ServerMessage = { role: "user", content: "" }
-): ClientMessage {
+  serverMessage: ServerMessageType = { role: "user", content: "" }
+): ClientMessageType {
   return {
     id: uuidv4(),
     role: serverMessage.role,
@@ -24,15 +24,17 @@ export function processMessageForClient(
 }
 
 export function processMessageForServer(
-  clientMessage: ClientMessage
-): ServerMessage {
+  clientMessage: ClientMessageType
+): ServerMessageType {
   return {
     role: clientMessage.role,
     content: clientMessage.content,
   };
 }
 
-export function processSystemMessageForServer(content: string): ServerMessage {
+export function processSystemMessageForServer(
+  content: string
+): ServerMessageType {
   return {
     role: "system",
     content: content.length ? content : DEFAULT_SYSTEM_MESSAGE,
@@ -40,8 +42,8 @@ export function processSystemMessageForServer(content: string): ServerMessage {
 }
 
 export function combineMessages(
-  messages: ClientMessage[],
-  newMessages: ClientMessage[],
+  messages: ClientMessageType[],
+  newMessages: ClientMessageType[],
   index: number | null = null
 ) {
   const messagesCopy = [...messages];
@@ -53,7 +55,7 @@ export function combineMessages(
   return messagesCopy;
 }
 
-export function removeMessage(messages: ClientMessage[], index: number) {
+export function removeMessage(messages: ClientMessageType[], index: number) {
   const messagesCopy = [...messages];
   messagesCopy.splice(index, 1);
   return messagesCopy;
