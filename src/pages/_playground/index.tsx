@@ -9,12 +9,9 @@ import toast from "react-hot-toast";
 import MessageRow from "./message-row";
 
 import PlaygroundConfiguration, {
-  playgroundConfigurationOptions,
+  generatePlaygroundConfigurationState,
 } from "./playground-configuration";
-import type {
-  PlaygroundConfigurationType,
-  PlaygroundConfigurationStateType,
-} from "./playground-configuration";
+import type { PlaygroundConfigurationStateType } from "./playground-configuration";
 
 import { Button, LoadingSpinner } from "~/components";
 
@@ -29,6 +26,8 @@ import {
 } from "~/utils/message";
 import type { ServerMessageType, ClientMessageType } from "~/utils/message";
 
+import type { ChatInputType } from "~/utils/open-ai";
+
 function Playground() {
   const [systemMessage, setSystemMessage] = useState("");
   const [otherMessages, setOtherMessages] = useState<ClientMessageType[]>([
@@ -36,13 +35,7 @@ function Playground() {
   ]);
   const [playgroundConfiguration, setPlaygroundConfiguration] =
     useState<PlaygroundConfigurationStateType>(
-      playgroundConfigurationOptions.reduce(
-        (accumulator, { key, defaultValue }: PlaygroundConfigurationType) => ({
-          ...accumulator,
-          [key]: defaultValue,
-        }),
-        {}
-      )
+      generatePlaygroundConfigurationState()
     );
 
   const chatMutation = api.chat.submit.useMutation({
@@ -88,7 +81,7 @@ function Playground() {
     setOtherMessages(removeMessage(otherMessages, index));
   };
 
-  const handleConfigChange = (option: string, value: string) => {
+  const handleConfigChange = (option: string, value: number) => {
     setPlaygroundConfiguration({
       ...playgroundConfiguration,
       [option]: value,
@@ -102,7 +95,7 @@ function Playground() {
         ...otherMessages.map((message) => processMessageForServer(message)),
       ],
       ...playgroundConfiguration,
-    });
+    } as ChatInputType);
   };
 
   const handleAddMessage = () => {
@@ -118,7 +111,7 @@ function Playground() {
       </Head>
       <main>
         <div className="grid grid-cols-[minmax(0,_1fr)] grid-rows-[min-content_min-content_minmax(0,_1fr)] gap-6 p-6 lg:grid-cols-[minmax(0,_1fr)_200px] xl:grid-cols-[minmax(0,_1fr)_300px]">
-          <div className="lg:col-span-2">
+          <div className="col-span-2">
             <h1 className="text-2xl">Playground</h1>
           </div>
           <div className="grow-1 col-span-1 flex flex-col gap-2">
@@ -168,7 +161,7 @@ function Playground() {
               </Button>
             </div>
           </div>
-          <div className="col-span-1 col-start-2 row-span-2 row-start-2 hidden flex-col gap-4 lg:flex">
+          <div className="col-span-1 col-start-2 row-span-2 row-start-2">
             <PlaygroundConfiguration
               configuration={playgroundConfiguration}
               handleChange={handleConfigChange}

@@ -7,9 +7,17 @@ const configuration = new Configuration({
 });
 const openAi = new OpenAIApi(configuration);
 
-export async function createChatCompletion(messages: ServerMessageType[]) {
+export interface ChatInputType {
+  messages: ServerMessageType[];
+  temperature: number;
+  max_tokens: number;
+  frequency_penalty: number;
+  presence_penalty: number;
+}
+
+export async function createChatCompletion(input: ChatInputType) {
   return await openAi.createChatCompletion({
     model: "gpt-3.5-turbo",
-    messages,
+    ...input,
   });
 }

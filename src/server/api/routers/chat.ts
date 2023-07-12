@@ -2,7 +2,8 @@ import { z } from "zod";
 
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 
-import { createChatCompletion } from "~/server/open-ai";
+import { createChatCompletion } from "~/utils/open-ai";
+import type { ChatInputType } from "~/utils/open-ai";
 
 export const chatRouter = createTRPCRouter({
   submit: publicProcedure
@@ -14,12 +15,16 @@ export const chatRouter = createTRPCRouter({
             content: z.string().min(1),
           })
         ),
+        temperature: z.number(),
+        max_tokens: z.number(),
+        frequency_penalty: z.number(),
+        presence_penalty: z.number(),
       })
     )
-    .mutation(async ({ input }) => {
+    .mutation(async ({ input }: { input: ChatInputType }) => {
       const {
         data: { choices },
-      } = await createChatCompletion(input.messages);
+      } = await createChatCompletion(input);
       return choices[0];
     }),
 });
