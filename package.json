@@ -28,6 +28,7 @@
     "react-dom": "18.2.0",
     "react-hot-toast": "^2.4.1",
     "react-modern-drawer": "^1.2.0",
+    "react-tooltip": "^5.18.0",
     "superjson": "1.12.2",
     "uuid": "^9.0.0",
     "zod": "^3.21.4"
