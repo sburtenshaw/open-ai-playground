@@ -11,7 +11,7 @@ import type {
   Role,
 } from "~/utils/message";
 
-interface PropsType {
+interface MessageRowPropsType {
   message: ServerMessageType | ClientMessageType;
   canRemove?: boolean;
   disabled?: boolean;
@@ -32,7 +32,7 @@ function MessageRow({
   disabled = false,
   handleChange,
   handleRemove,
-}: PropsType) {
+}: MessageRowPropsType) {
   return (
     <>
       <div className="flex w-20" style={{ marginTop: "11px" }}>

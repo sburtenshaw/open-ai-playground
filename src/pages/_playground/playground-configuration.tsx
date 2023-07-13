@@ -23,7 +23,7 @@ interface PlaygroundConfigurationStateType {
   [_: string]: number;
 }
 
-interface PropsType {
+interface PlaygroundConfigurationPropsType {
   configuration: PlaygroundConfigurationStateType;
   disabled: boolean;
   handleChange: (option: string, value: number) => void;
@@ -78,7 +78,7 @@ function PlaygroundConfiguration({
   configuration,
   disabled,
   handleChange,
-}: PropsType) {
+}: PlaygroundConfigurationPropsType) {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const handleOpenDrawer = () => {

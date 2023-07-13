@@ -7,11 +7,11 @@ import { Tooltip as ReactTooltip } from "react-tooltip";
 import type { ITooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
 
-interface Props extends ITooltip {
+interface TooltipPropsType extends ITooltip {
   children: ReactElement;
 }
 
-function Tooltip({ content, children, ...props }: Props) {
+function Tooltip({ content, children, ...props }: TooltipPropsType) {
   const id = uuidv4();
   return (
     <>

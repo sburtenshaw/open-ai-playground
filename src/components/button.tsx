@@ -1,11 +1,11 @@
 import type { ButtonHTMLAttributes, ReactNode } from "react";
 
-interface PropsType extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonPropsType extends ButtonHTMLAttributes<HTMLButtonElement> {
   small?: boolean;
   children: ReactNode;
 }
 
-function Button({ small = false, children, ...props }: PropsType) {
+function Button({ small = false, children, ...props }: ButtonPropsType) {
   const getClassName = () => {
     const className = [
       "text-white",
