@@ -14,6 +14,7 @@ import type {
 interface PropsType {
   message: ServerMessageType | ClientMessageType;
   canRemove?: boolean;
+  disabled?: boolean;
   handleChange: (value: string) => void;
   handleRemove?: () => void;
 }
@@ -28,6 +29,7 @@ const getPlaceholder = (role: Role) => {
 function MessageRow({
   message,
   canRemove = false,
+  disabled = false,
   handleChange,
   handleRemove,
 }: PropsType) {
@@ -41,6 +43,7 @@ function MessageRow({
         <TextInput
           value={message.content}
           placeholder={getPlaceholder(message.role)}
+          disabled={disabled}
           onInput={(e: ChangeEvent<HTMLTextAreaElement>) => {
             e.preventDefault();
             handleChange(e.target.value);
@@ -51,6 +54,7 @@ function MessageRow({
         <div className="flex items-start">
           <Tooltip content="Remove message">
             <Button
+              disabled={disabled}
               onClick={() => {
                 handleRemove();
               }}

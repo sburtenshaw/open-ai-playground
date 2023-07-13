@@ -121,6 +121,7 @@ function Playground() {
                   role: "system",
                   content: systemMessage,
                 }}
+                disabled={chatMutation.isLoading}
                 handleChange={(value: string) => {
                   handleSystemMessageChange(value);
                 }}
@@ -134,6 +135,7 @@ function Playground() {
                 <MessageRow
                   message={message}
                   canRemove={index !== 0 || otherMessages.length > 1}
+                  disabled={chatMutation.isLoading}
                   handleChange={(value: string) => {
                     handleMessageChange(message, value, index);
                   }}
@@ -164,6 +166,7 @@ function Playground() {
           <div className="col-span-1 col-start-2 row-span-2 row-start-2">
             <PlaygroundConfiguration
               configuration={playgroundConfiguration}
+              disabled={chatMutation.isLoading}
               handleChange={handleConfigChange}
             />
           </div>

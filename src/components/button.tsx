@@ -5,22 +5,22 @@ interface PropsType extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
 }
 
-function Button({ disabled, small = false, children, ...props }: PropsType) {
+function Button({ small = false, children, ...props }: PropsType) {
   const getClassName = () => {
     const className = [
       "text-white",
       "font-medium",
       "rounded-lg",
       "text-center",
+      "bg-blue-700",
+      "hover:bg-blue-800",
+      "focus:outline-none",
+      "disabled:bg-blue-400",
+      "disabled:cursor-not-allowed",
       small ? "text-xs" : "text-sm",
       small ? "px-3" : "px-5",
       small ? "h-9" : "h-12",
     ];
-    if (disabled) {
-      className.push("bg-blue-400", "cursor-not-allowed");
-    } else {
-      className.push("bg-blue-700", "hover:bg-blue-800", "focus:outline-none");
-    }
     return className.join(" ");
   };
 

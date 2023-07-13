@@ -25,6 +25,7 @@ interface PlaygroundConfigurationStateType {
 
 interface PropsType {
   configuration: PlaygroundConfigurationStateType;
+  disabled: boolean;
   handleChange: (option: string, value: number) => void;
 }
 
@@ -73,7 +74,11 @@ const generatePlaygroundConfigurationState = () => {
   );
 };
 
-function PlaygroundConfiguration({ configuration, handleChange }: PropsType) {
+function PlaygroundConfiguration({
+  configuration,
+  disabled,
+  handleChange,
+}: PropsType) {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const handleOpenDrawer = () => {
@@ -101,6 +106,7 @@ function PlaygroundConfiguration({ configuration, handleChange }: PropsType) {
             <RangeInput
               {...otherOptions}
               value={configuration[key]}
+              disabled={disabled}
               onInput={(e: ChangeEvent<HTMLInputElement>) => {
                 e.preventDefault();
                 handleChange(key, Number(e.target.value));
