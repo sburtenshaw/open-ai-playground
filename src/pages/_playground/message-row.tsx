@@ -2,7 +2,7 @@ import type { ChangeEvent } from "react";
 
 import { capitalize } from "lodash";
 
-import { Button, TextInput } from "~/components";
+import { Button, TextInput, Tooltip } from "~/components";
 
 import { DEFAULT_SYSTEM_MESSAGE } from "~/utils/message";
 import type {
@@ -49,13 +49,15 @@ function MessageRow({
       </div>
       {canRemove && !!handleRemove && (
         <div className="flex items-start">
-          <Button
-            onClick={() => {
-              handleRemove();
-            }}
-          >
-            -
-          </Button>
+          <Tooltip content="Remove message">
+            <Button
+              onClick={() => {
+                handleRemove();
+              }}
+            >
+              -
+            </Button>
+          </Tooltip>
         </div>
       )}
     </>
