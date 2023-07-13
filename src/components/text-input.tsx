@@ -8,6 +8,7 @@ function TextInput({
   HTMLTextAreaElement
 >) {
   const calculateRows = (): number => {
+    /* TODO: Fix doesn't work if text is a long sentence with no line breaks */
     if (!value || typeof value !== "string") {
       return 1;
     }

@@ -107,12 +107,12 @@ function Playground() {
   return (
     <>
       <Head>
-        <title>Playground</title>
+        <title>OpenAI Playground</title>
       </Head>
       <main>
         <div className="grid grid-cols-[minmax(0,_1fr)] grid-rows-[min-content_min-content_minmax(0,_1fr)] gap-6 p-6 lg:grid-cols-[minmax(0,_1fr)_200px] xl:grid-cols-[minmax(0,_1fr)_300px]">
           <div className="col-span-2">
-            <h1 className="text-2xl">Playground</h1>
+            <h1 className="text-2xl">OpenAI Playground</h1>
           </div>
           <div className="grow-1 col-span-1 flex flex-col gap-2">
             <div className="flex flex-row gap-2">

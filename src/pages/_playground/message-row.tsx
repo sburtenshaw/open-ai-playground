@@ -34,7 +34,7 @@ function MessageRow({
   return (
     <>
       <div className="flex w-20" style={{ marginTop: "11px" }}>
-        {/* make dropdown? */}
+        {/* TODO: Make dropdown */}
         <p>{capitalize(message.role)}</p>
       </div>
       <div className="flex-1">
