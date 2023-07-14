@@ -13,7 +13,9 @@ import PlaygroundConfiguration, {
 } from "./playground-configuration";
 import type { PlaygroundConfigurationStateType } from "./playground-configuration";
 
-import { Button, LoadingSpinner } from "~/components";
+import HelpDrawer from "./help-drawer";
+
+import { Button, Help, LoadingSpinner } from "~/components";
 
 import { api } from "~/utils/api";
 
@@ -37,6 +39,7 @@ function Playground() {
     useState<PlaygroundConfigurationStateType>(
       generatePlaygroundConfigurationState()
     );
+  const [helpDrawerOpen, setHelpDrawerOpen] = useState(false);
 
   const chatMutation = api.chat.submit.useMutation({
     onSuccess: (data) => {
@@ -104,6 +107,14 @@ function Playground() {
     );
   };
 
+  const handleOpenHelpDrawer = () => {
+    setHelpDrawerOpen(true);
+  };
+
+  const handleCloseHelpDrawer = () => {
+    setHelpDrawerOpen(false);
+  };
+
   return (
     <>
       <Head>
@@ -111,8 +122,9 @@ function Playground() {
       </Head>
       <main>
         <div className="grid grid-cols-[minmax(0,_1fr)] grid-rows-[min-content_min-content_minmax(0,_1fr)] gap-6 p-6 lg:grid-cols-[minmax(0,_1fr)_200px] xl:grid-cols-[minmax(0,_1fr)_300px]">
-          <div className="col-span-2">
+          <div className="col-span-2 flex items-center gap-2">
             <h1 className="text-2xl">OpenAI Playground</h1>
+            <Help onClick={handleOpenHelpDrawer} />
           </div>
           <div className="grow-1 col-span-1 flex flex-col gap-2">
             <div className="flex flex-row gap-2">
@@ -168,10 +180,12 @@ function Playground() {
               configuration={playgroundConfiguration}
               disabled={chatMutation.isLoading}
               handleChange={handleConfigChange}
+              handleOpenHelpDrawer={handleOpenHelpDrawer}
             />
           </div>
         </div>
       </main>
+      <HelpDrawer open={helpDrawerOpen} handleClose={handleCloseHelpDrawer} />
     </>
   );
 }

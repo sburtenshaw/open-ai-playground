@@ -25,11 +25,10 @@ function Help({ content = "Help", onClick }: HelpPropsType) {
     }
     return className.join(" ");
   };
-  console.log(content);
   return (
     <Tooltip content={content}>
-      <div className={getClassName()}>
-        <div onClick={onClick}>?</div>
+      <div onClick={onClick} className={getClassName()}>
+        ?
       </div>
     </Tooltip>
   );

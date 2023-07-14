@@ -8,7 +8,7 @@ import Image from "next/image";
 import Drawer from "react-modern-drawer";
 import "react-modern-drawer/dist/index.css";
 
-import { Button, RangeInput } from "~/components";
+import { Button, Help, RangeInput } from "~/components";
 
 interface PlaygroundConfigurationType {
   key: string;
@@ -27,6 +27,7 @@ interface PlaygroundConfigurationPropsType {
   configuration: PlaygroundConfigurationStateType;
   disabled: boolean;
   handleChange: (option: string, value: number) => void;
+  handleOpenHelpDrawer: () => void;
 }
 
 const playgroundConfigurationOptions: PlaygroundConfigurationType[] = [
@@ -78,6 +79,7 @@ function PlaygroundConfiguration({
   configuration,
   disabled,
   handleChange,
+  handleOpenHelpDrawer,
 }: PlaygroundConfigurationPropsType) {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
@@ -100,7 +102,10 @@ function PlaygroundConfiguration({
         }: PlaygroundConfigurationType) => (
           <div key={key}>
             <div className="flex justify-between">
-              <h2>{text}</h2>
+              <div className="flex items-center gap-2">
+                <h2>{text}</h2>
+                <Help onClick={handleOpenHelpDrawer} />
+              </div>
               <p>{configuration[key]}</p>
             </div>
             <RangeInput
