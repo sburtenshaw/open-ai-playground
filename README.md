@@ -36,6 +36,24 @@ Next I will focus on adding custom features to the project, some ideas are:
 - Instructions, tooltips and contextual help
 - Customizable options (dark mode, font size, module placement)
 
+## Instructions / about added - 14th July 15:12
+
+I've now added some basic information about what the OpenAI Playground is, what the different message types are and a bit of information regarding the configuration options. This helps the application feel more 'polished' and well rounded. While the implementation is somewhat basic, I think it serves it's purpose. I would like to take this further by doing a couple of things:
+
+- Create a more in depth tutorial
+- Split the information into more focused, separate components
+- Improve the UI and readability of the information
+
+Given the amount of time already spent on this project / technical test, I think I will send this project to Stefan as it currently is. I wanted to add more custom ideas before sending, such as:
+
+- Pre-defined system messages / personas
+- Auto re-submit option if max tokens reached
+- Customizable options (dark mode, font size, module placement)
+
+But given the timeframe, I think I'm out of time.
+
+I will be continuing to work on and improve this project, as a fun side project to add to my portfolio. I will also be hosting this project on my personal domain https://seanburtenshaw.co.uk (the website is down as I write this, but I will be fixing it).
+
 # Create T3 App
 
 This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
