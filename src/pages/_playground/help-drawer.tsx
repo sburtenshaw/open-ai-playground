@@ -8,7 +8,7 @@ interface SectionPropsType {
   children: ReactNode;
 }
 
-function Section({ title, variation = "text-lg", children }: SectionPropsType) {
+function Section({ title, variation = "text-md", children }: SectionPropsType) {
   return (
     <div className="mb-4">
       <h2 className={`mb-2 ${variation}`}>{title}</h2>
@@ -33,7 +33,7 @@ function HelpDrawer({ open, handleClose }: HelpDrawerPropsType) {
     >
       <div className="p-4">
         <Section title="What is OpenAI Playground?" variation="text-xl">
-          <p>
+          <p className="text-sm">
             OpenAI has trained cutting-edge language models that are very good
             at understanding and generating text. The playground is a tool used
             to test and tune different input configurations for the language
@@ -42,20 +42,20 @@ function HelpDrawer({ open, handleClose }: HelpDrawerPropsType) {
         </Section>
         <h2 className="mb-2 text-xl">Messages</h2>
         <Section title="System message">
-          <p>
+          <p className="text-sm">
             The system message input field is used to define a
             &apos;persona&apos; or tweak characteristics in how the language
             model should respond to your message.
           </p>
         </Section>
         <Section title="User messages">
-          <p>
+          <p className="text-sm">
             User messages are inputs from the user, or you. They are the
             messages that you want the language model to respond to.
           </p>
         </Section>
         <Section title="Assistant messages">
-          <p>
+          <p className="text-sm">
             Assistant messages are the response from the language model. Every
             prior message (assistant, user and the system message) is taken into
             consideration on every request, so you can tweak these responses
@@ -65,7 +65,7 @@ function HelpDrawer({ open, handleClose }: HelpDrawerPropsType) {
         </Section>
         <h2 className="mb-2 text-xl">Configuration</h2>
         <Section title="Temperature">
-          <p>
+          <p className="text-sm">
             Temperature is a value between 0 and 2 that essentially lets you
             control how confident the model should be when making these
             predictions. Lowering temperature means it will take fewer risks,
@@ -74,7 +74,7 @@ function HelpDrawer({ open, handleClose }: HelpDrawerPropsType) {
           </p>
         </Section>
         <Section title="Maximum length">
-          <p>
+          <p className="text-sm">
             Maximum length is the number of tokens the model will use up before
             it stops the request. If the maximum number of tokens is reached,
             the response will be incomplete and another request will need to be
@@ -84,7 +84,7 @@ function HelpDrawer({ open, handleClose }: HelpDrawerPropsType) {
           </p>
         </Section>
         <Section title="Frequency penalty">
-          <p>
+          <p className="text-sm">
             Frequency penalty is a vlue between 0 and 2. Higher values penalize
             new tokens more based on their existing frequency in the text so
             far, decreasing the model&apos;s likelihood to repeat the same line
@@ -92,7 +92,7 @@ function HelpDrawer({ open, handleClose }: HelpDrawerPropsType) {
           </p>
         </Section>
         <Section title="Presence penalty">
-          <p>
+          <p className="text-sm">
             Presence penalty is a value between 0 and 2. Higher values penalize
             new tokens more based on whether they appear in the text so far,
             increasing the model&apos;s likelihood to talk about new topics.
